@@ -55,7 +55,7 @@ const studentSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
-
+    // This will keep all the exam results of the student
     examResults: [
       {
         type: mongoose.Schema.Types.ObjectId,
