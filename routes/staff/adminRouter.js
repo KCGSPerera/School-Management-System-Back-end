@@ -3,7 +3,7 @@ const express = require('express');
 const { registerAdminCtrl, 
     loginAdminCtrl, 
     getAdminsCtrl, 
-    getAdminCtrl, 
+    getAdminProfileCtrl, 
     updateAdminCtrl, 
     deleteAdminCtrl, 
     adminSuspendTeacherCtrl, 
@@ -30,7 +30,7 @@ adminRouter.post("/login", loginAdminCtrl);
 adminRouter.get("/", getAdminsCtrl);
 
 // Get single Admin
-adminRouter.get("/:id", isLogin, getAdminCtrl);
+adminRouter.get("/profile", isLogin, getAdminProfileCtrl);
 
 // Update
 adminRouter.put("/:id", updateAdminCtrl);
