@@ -54,19 +54,14 @@ exports.loginAdminCtrl =  AsyncHandler(async (req, res) => {
 // @dec Get all Admin
 // @route GET /api/v1/admins/
 // @access Private
-exports.getAdminsCtrl = (req, res) => {  
-    try {
-        res.status(201).json({
-            status: "Success",
-            data: "All Admins",
-        });
-    } catch (error) {
-        res.json({
-            status: "failed",
-            error: error.message,
-        });
-    }
-};
+exports.getAdminsCtrl = AsyncHandler (async(req, res) => {  
+    const admins = await Admin.find();
+    res.status(200).json({
+        status: "success",
+        message: "Admins fetched successfully",
+        data: admins,
+    });
+});
 
 // @dec Get single Admin
 // @route GET /api/v1/admins/:id

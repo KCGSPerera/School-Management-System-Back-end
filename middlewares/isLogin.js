@@ -5,7 +5,7 @@ const verifyToken = require("../utills/verifyToken");
 const isLogin = async (req, res, next) => {
 // get token from header
 const headerObj = req.headers;
-const token = headerObj.authorization.split(" ")[1]; // getting the second index, which is token
+const token = headerObj?.authorization?.split(" ")[1]; // getting the second index, which is token
 // verify token
 const verifiedToken = verifyToken(token);
 if(verifiedToken){
