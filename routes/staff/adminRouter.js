@@ -15,6 +15,7 @@ const { registerAdminCtrl,
     
  } = require('../../controller/staff/adminctrl');
 const isLogin = require('../../middlewares/isLogin');
+const isAdmin = require('../../middlewares/isAdmin');
 
 const adminRouter = express.Router();
 
@@ -30,7 +31,7 @@ adminRouter.post("/login", loginAdminCtrl);
 adminRouter.get("/", isLogin, getAdminsCtrl);
 
 // Get single Admin
-adminRouter.get("/profile", isLogin, getAdminProfileCtrl);
+adminRouter.get("/profile", isLogin, isAdmin, getAdminProfileCtrl);
 
 // Update
 adminRouter.put("/:id", updateAdminCtrl);

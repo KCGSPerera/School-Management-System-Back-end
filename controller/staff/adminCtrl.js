@@ -79,6 +79,7 @@ exports.getAdminProfileCtrl =  AsyncHandler(async(req, res) => {
         });
     }
 }); 
+
 // @dec update Admin
 // @route PUT /api/v1/admins/:id
 // @access Private
