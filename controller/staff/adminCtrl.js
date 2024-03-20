@@ -102,17 +102,12 @@ exports.updateAdminCtrl =  AsyncHandler(async(req, res) => {
         throw new Error("The email is taken/exist.");
     } 
 
-    // hash password
-    const salt = await bcrypt.genSalt(10);
-    const passwordHashed = await bcrypt.hash(password, salt);
-
     // check if user updating password
     if(password){
-        // console.log(password, passwordHashed);
         // update
         const admin = await Admin.findByIdAndUpdate(req.userAuth._id, {
             email,
-            password: passwordHashed,
+            password:await hashPassword(password),
             name,
         },
         {
