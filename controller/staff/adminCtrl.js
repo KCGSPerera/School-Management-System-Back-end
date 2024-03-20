@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const Admin = require("../../model/Staff/Admin");
 const generateToken = require("../../utills/generateToken");
 const verifyToken = require("../../utills/verifyToken");
+const { hashPassword, isPassMatched } = require("../../utills/helpers");
 
 // @dec Admin register
 // @route POST /api/v1/admins/register
@@ -15,14 +16,12 @@ exports.registerAdminCtrl = AsyncHandler(async (req, res) => {
         if(adminFound){
             throw new Error("Admin Exist");
         }
-        // hash password
-        const salt = await bcrypt.genSalt(10);
-        const passwordHashed = await bcrypt.hash(password, salt);
+        
         // register
         const user = await Admin.create({
             name,
             email,
-            password: passwordHashed,
+            password: hashPassword(password),
         });
         res.status(201).json({
             status: "Success",
