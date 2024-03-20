@@ -11,7 +11,7 @@ const academicYearRouter = express.Router();
 
 // route chaining
 academicYearRouter
-.use("/")
+.route("/")
 .post(isLogin, isAdmin, createAcademicYear)
 .get(isLogin, isAdmin, getAcademicYears);
 
@@ -20,7 +20,7 @@ academicYearRouter
 // academicYearRouter.delete("/:id", isLogin, isAdmin, deleteAcademicYear);
 
 academicYearRouter
-.use("/")
+.route("/")
 .get(isLogin, isAdmin, getAcademicYear)
 .put(isLogin, isAdmin, updateAcademicYear)
 .delete(isLogin, isAdmin, deleteAcademicYear);
