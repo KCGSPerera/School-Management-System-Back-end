@@ -1,7 +1,9 @@
 const express  = require('express');
 const morgan = require('morgan');
-const adminRouter = require('../routes/staff/adminRouter');
 const {globalErrHandler, notFoundErr,} = require('../middlewares/globalErrHandler');
+const academicYearRouter = require('../routes/academics/academicYear');
+const adminRouter = require('../routes/staff/adminRouter');
+
 //const notFoundErr = require('../middlewares/globalErrHandler');
 const app = express();
 
@@ -13,6 +15,8 @@ app.use(express.json());  // pass incoming JSON data
 
 // Admin 
 app.use("/api/v1/admins", adminRouter);
+//Academic Year
+app.use("/api/v1/academic-years", academicYearRouter);
 
 // Error handelling middleware
 app.use(notFoundErr)
