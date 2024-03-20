@@ -21,7 +21,7 @@ exports.registerAdminCtrl = AsyncHandler(async (req, res) => {
         const user = await Admin.create({
             name,
             email,
-            password: hashPassword(password),
+            password: await hashPassword(password),
         });
         res.status(201).json({
             status: "Success",
