@@ -42,12 +42,9 @@ exports.loginAdminCtrl =  AsyncHandler(async (req, res) => {
         if(!user){
             return res.json({message: "User not found"});
         }
-        // // hash password
-        // const salt = await bcrypt.genSalt(10);
-        // const passwordHashed = await bcrypt.hash(password, salt);
-
+        
         //verify password
-        const isMatched = await bcrypt.compare(password, user.password);
+        const isMatched = await isPassMatched(password, user.password);
 
         // check if password is matching
         if(!isMatched){
