@@ -112,6 +112,7 @@ exports.updateAdminCtrl =  AsyncHandler(async(req, res) => {
 
     // check if user updating password
     if(password){
+        // console.log(password, passwordHashed);
         // update
         const admin = await Admin.findByIdAndUpdate(req.userAuth._id, {
             email,
