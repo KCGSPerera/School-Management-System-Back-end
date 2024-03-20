@@ -25,6 +25,8 @@ exports.createAcademicYear = AsyncHandler(async (req, res) => {
     // push academic into admin
     const admin = await Admin.findById(req.userAuth._id);
     admin.academicYears.push(academicYearCreated._id);
+    await admin.save();
+    
     res.status(201).json({
         status: "success",
         message: "Academic Year created successfully",
