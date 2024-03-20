@@ -82,7 +82,7 @@ exports.updateAcademicYear = AsyncHandler(async (req, res) => {
 
     res.status(201).json({
         status: "success",
-        message: "Specified Academic Year fetched successfully",
+        message: "Specified Academic Year Updated successfully",
         data: academicYear,
     });
 }); 
