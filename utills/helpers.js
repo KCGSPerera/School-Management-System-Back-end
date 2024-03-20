@@ -8,5 +8,5 @@ exports.hashPassword = async password => {
 };
 
 exports.isPassMatched = async ( password, hash ) => {
-    return bcrypt.compare(password, salt);
+    return await bcrypt.compare(password, hash);
 };
