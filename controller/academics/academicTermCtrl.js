@@ -59,24 +59,23 @@ exports.getAcademicTerm = AsyncHandler(async (req, res) => {
     });
 }); 
 
-// @dec Update Academic Year
-// @route PUT /api/v1/academic-years/:id
+// @dec Update Academic Term
+// @route PUT /api/v1/academic-terms/:id
 // @access Private
-exports.updateAcademicYear = AsyncHandler(async (req, res) => {
-    const { name, fromYear, toYear } = req.body;
+exports.updateAcademicTerm = AsyncHandler(async (req, res) => {
+    const { name, description } = req.body;
 
     // check name exists
-    const createAcademicYearFound = await AcademicYear.findOne({name});
-    if(createAcademicYearFound){
-        throw new Error("Academic Year already exists");
+    const createAcademicTermFound = await AcademicTerm.findOne({name});
+    if(createAcademicTermFound){
+        throw new Error("Academic Term already exists");
     }
 
-    const academicYear = await AcademicYear.findByIdAndUpdate(
+    const academicTerm = await AcademicTerm.findByIdAndUpdate(
         req.params.id,
         {
             name, 
-            fromYear,
-            toYear,
+            description,
             createdBy: req.userAuth._id,
         },
         {
@@ -86,20 +85,20 @@ exports.updateAcademicYear = AsyncHandler(async (req, res) => {
 
     res.status(201).json({
         status: "success",
-        message: "Specified Academic Year Updated successfully",
-        data: academicYear,
+        message: "Specified Academic Term Updated successfully",
+        data: academicTerm,
     });
 }); 
 
-// @dec Delete Academic Year
-// @route DELETE /api/v1/academic-years/:id
+// @dec Delete Academic Term
+// @route DELETE /api/v1/academic-terms/:id
 // @access Private
-exports.deleteAcademicYear = AsyncHandler(async (req, res) => {
+exports.deleteAcademicTerm = AsyncHandler(async (req, res) => {
     
-    await AcademicYear.findByIdAndDelete(req.params.id);
+    await AcademicTerm.findByIdAndDelete(req.params.id);
 
     res.status(201).json({
         status: "success",
-        message: "Specified Academic Year Deleted successfully",
+        message: "Specified Academic Term Deleted successfully",
     });
 }); 
