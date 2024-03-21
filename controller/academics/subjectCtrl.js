@@ -2,6 +2,7 @@ const AsyncHandler = require("express-async-handler");
 const Admin = require("../../model/Staff/Admin");
 const { throws } = require("assert");
 const Subject = require("../../model/Academic/Subject");
+const Program = require("../../model/Academic/Program");
 
 // @dec Create Subject
 // @route POST /api/v1/subjects
@@ -9,6 +10,11 @@ const Subject = require("../../model/Academic/Subject");
 exports.createSubject = AsyncHandler(async (req, res) => {
     const { name, description, academicTerm} = req.body;
 
+    // find the program
+    const programFound = await Program.findById(req.params.programId);
+    if(!programFound){
+        throw new Error("Program not found")
+    }
     // check if exist
     const subject = await Program.findOne({name});
     if(subject){
@@ -22,10 +28,16 @@ exports.createSubject = AsyncHandler(async (req, res) => {
         academicTerm,
         createdBy: req.userAuth._id,
     });
-    // push Subject into admin
-    const admin = await Admin.findById(req.userAuth._id);
-    admin.Subject.push(subjectCreated._id);
-    await admin.save();
+
+    // // push Subject into admin
+    // const admin = await Admin.findById(req.userAuth._id);
+    // admin.Subject.push(subjectCreated._id);
+    // await admin.save();
+
+    // push to the program
+    programFound.subjects.push(subjectCreated._id);
+    // save
+    await programFound.save();
     
     res.status(201).json({
         status: "success",
