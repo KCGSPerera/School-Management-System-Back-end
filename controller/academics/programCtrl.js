@@ -60,23 +60,24 @@ exports.getProgram = AsyncHandler(async (req, res) => {
     });
 }); 
 
-// @dec Update Class Level
-// @route PUT /api/v1/class-levels/:id
+// @dec Update program
+// @route PUT /api/v1/programs/:id
 // @access Private
-exports.updateClassLevel = AsyncHandler(async (req, res) => {
-    const { name, description } = req.body;
+exports.updateProgram = AsyncHandler(async (req, res) => {
+    const { name, description, duration } = req.body;
 
-    // check name exists
-    const createClassLevelFound = await ClassLevel.findOne({name});
-    if(createClassLevelFound){
-        throw new Error("Class Level already exists");
+    // check pogram exists
+    const createProgramFound = await Program.findOne({name});
+    if(createProgramFound){
+        throw new Error("Program already exists");
     }
 
-    const classLevel = await ClassLevel.findByIdAndUpdate(
+    const program = await Program.findByIdAndUpdate(
         req.params.id,
         {
             name, 
             description,
+            duration,
             createdBy: req.userAuth._id,
         },
         {
@@ -87,7 +88,7 @@ exports.updateClassLevel = AsyncHandler(async (req, res) => {
     res.status(201).json({
         status: "success",
         message: "Specified Class Level Updated successfully",
-        data: classLevel,
+        data: program,
     });
 }); 
 
