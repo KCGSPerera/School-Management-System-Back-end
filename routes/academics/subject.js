@@ -6,18 +6,18 @@ const { createSubject, getSubjects, updateSubject, deleteSubject, getSubject } =
 const subjectRouter = express.Router();
 
 
-// subjectRouter.post("/", isLogin, isAdmin, createAcademicYear);
-// subjectRouter.get("/", isLogin, isAdmin, getAcademicYears);
+subjectRouter.post("/:programID", isLogin, isAdmin, createSubject);
+subjectRouter.get("/", isLogin, getSubjects);
 
-// route chaining
-subjectRouter
-.route("/")
-.post(isLogin, isAdmin, createSubject)
-.get(isLogin, getSubjects);
+// // route chaining
+// subjectRouter
+// .route("/")
+// .post(isLogin, isAdmin, createSubject)
+// .get(isLogin, getSubjects);
 
-// subjectRouter.get("/:id", isLogin, isAdmin, getAcademicYear);
-// subjectRouter.put("/:id", isLogin, isAdmin, updateAcademicYear);
-// subjectRouter.delete("/:id", isLogin, isAdmin, deleteAcademicYear);
+subjectRouter.get("/:id", isLogin, getSubject);
+subjectRouter.put("/:id", isLogin, isAdmin, updateSubject);
+subjectRouter.delete("/:id", isLogin, isAdmin, deleteSubject);
 
 subjectRouter
 .route("/:id")
