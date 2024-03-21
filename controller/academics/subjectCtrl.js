@@ -59,16 +59,16 @@ exports.getSubjects = AsyncHandler(async (req, res) => {
     });
 }); 
 
-// @dec Get single program
-// @route GET /api/v1/programs/:id
+// @dec Get single Subject
+// @route GET /api/v1/subjects/:id
 // @access Private
-exports.getProgram = AsyncHandler(async (req, res) => {
-    const program = await Program.findById(req.params.id);
+exports.getSubject = AsyncHandler(async (req, res) => {
+    const subject = await Subject.findById(req.params.id);
 
     res.status(201).json({
         status: "success",
-        message: "Specified Program fetched successfully",
-        data: program,
+        message: "Specified subject fetched successfully",
+        data: subject,
     });
 }); 
 
