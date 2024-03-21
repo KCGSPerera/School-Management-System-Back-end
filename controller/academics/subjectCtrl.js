@@ -72,23 +72,24 @@ exports.getSubject = AsyncHandler(async (req, res) => {
     });
 }); 
 
-// @dec Update program
-// @route PUT /api/v1/programs/:id
+// @dec Update Subject
+// @route PUT /api/v1/subjects/:id
 // @access Private
-exports.updateProgram = AsyncHandler(async (req, res) => {
-    const { name, description } = req.body;
+exports.updateSubject = AsyncHandler(async (req, res) => {
+    const { name, description, academicTerm } = req.body;
 
-    // check pogram exists
-    const createProgramFound = await Program.findOne({name});
-    if(createProgramFound){
-        throw new Error("Program already exists");
+    // check Subject exists
+    const createSubjectFound = await Subject.findOne({name});
+    if(createSubjectFound){
+        throw new Error("Subject already exists");
     }
 
-    const program = await Program.findByIdAndUpdate(
+    const subject = await Subject.findByIdAndUpdate(
         req.params.id,
         {
             name, 
             description,
+            academicTerm,
             createdBy: req.userAuth._id,
         },
         {
@@ -98,8 +99,8 @@ exports.updateProgram = AsyncHandler(async (req, res) => {
 
     res.status(201).json({
         status: "success",
-        message: "Specified Class Level Updated successfully",
-        data: program,
+        message: "Specified Subject Updated successfully",
+        data: subject,
     });
 }); 
 
