@@ -7,7 +7,7 @@ const AcademicTerm = require("../../model/Academic/AcademicTerm");
 // @route POST /api/v1/academic-terms
 // @access Private
 exports.createAcademicTerm = AsyncHandler(async (req, res) => {
-    const { name, description } = req.body;
+    const { name, description, duration } = req.body;
 
     // check if exist
     const academicTerm = await AcademicTerm.findOne({name});
@@ -19,6 +19,7 @@ exports.createAcademicTerm = AsyncHandler(async (req, res) => {
     const academicTermCreated = await AcademicTerm.create({
         name,
         description,
+        duration,
         createdBy: req.userAuth._id,
     });
     // push academic into admin
@@ -63,7 +64,7 @@ exports.getAcademicTerm = AsyncHandler(async (req, res) => {
 // @route PUT /api/v1/academic-terms/:id
 // @access Private
 exports.updateAcademicTerm = AsyncHandler(async (req, res) => {
-    const { name, description } = req.body;
+    const { name, description, duration } = req.body;
 
     // check name exists
     const createAcademicTermFound = await AcademicTerm.findOne({name});
@@ -76,6 +77,7 @@ exports.updateAcademicTerm = AsyncHandler(async (req, res) => {
         {
             name, 
             description,
+            duration,
             createdBy: req.userAuth._id,
         },
         {
