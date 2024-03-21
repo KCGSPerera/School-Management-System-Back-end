@@ -47,16 +47,16 @@ exports.getPrograms = AsyncHandler(async (req, res) => {
     });
 }); 
 
-// @dec Get single Class Level
-// @route GET /api/v1/class-levels/:id
+// @dec Get single program
+// @route GET /api/v1/programs/:id
 // @access Private
-exports.getClassLevel = AsyncHandler(async (req, res) => {
-    const classLevel = await ClassLevel.findById(req.params.id);
+exports.getProgram = AsyncHandler(async (req, res) => {
+    const program = await Program.findById(req.params.id);
 
     res.status(201).json({
         status: "success",
-        message: "Specified Class Level fetched successfully",
-        data: classLevel,
+        message: "Specified Program fetched successfully",
+        data: program,
     });
 }); 
 
