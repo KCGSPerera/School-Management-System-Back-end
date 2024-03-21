@@ -7,7 +7,7 @@ const Program = require("../../model/Academic/Program");
 // @route POST /api/v1/programs
 // @access Private
 exports.createProgram = AsyncHandler(async (req, res) => {
-    const { name, description, duration } = req.body;
+    const { name, description } = req.body;
 
     // check if exist
     const program = await Program.findOne({name});
@@ -19,7 +19,6 @@ exports.createProgram = AsyncHandler(async (req, res) => {
     const programCreated = await Program.create({
         name,
         description,
-        duration,
         createdBy: req.userAuth._id,
     });
     // push Program into admin
@@ -64,7 +63,7 @@ exports.getProgram = AsyncHandler(async (req, res) => {
 // @route PUT /api/v1/programs/:id
 // @access Private
 exports.updateProgram = AsyncHandler(async (req, res) => {
-    const { name, description, duration } = req.body;
+    const { name, description } = req.body;
 
     // check pogram exists
     const createProgramFound = await Program.findOne({name});
@@ -77,7 +76,6 @@ exports.updateProgram = AsyncHandler(async (req, res) => {
         {
             name, 
             description,
-            duration,
             createdBy: req.userAuth._id,
         },
         {
