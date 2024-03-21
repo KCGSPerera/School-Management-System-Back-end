@@ -92,15 +92,15 @@ exports.updateProgram = AsyncHandler(async (req, res) => {
     });
 }); 
 
-// @dec Delete Class Level
-// @route DELETE /api/v1/class-levels/:id
+// @dec Delete Program
+// @route DELETE /api/v1/programs/:id
 // @access Private
-exports.deleteClassLevel = AsyncHandler(async (req, res) => {
+exports.deleteProgram = AsyncHandler(async (req, res) => {
     
-    await ClassLevel.findByIdAndDelete(req.params.id);
+    await Program.findByIdAndDelete(req.params.id);
 
     res.status(201).json({
         status: "success",
-        message: "Specified Class Level Deleted successfully",
+        message: "Specified Program Deleted successfully",
     });
 }); 
