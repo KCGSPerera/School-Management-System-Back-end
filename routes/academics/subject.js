@@ -19,10 +19,10 @@ subjectRouter.get("/:id", isLogin, getSubject);
 subjectRouter.put("/:id", isLogin, isAdmin, updateSubject);
 subjectRouter.delete("/:id", isLogin, isAdmin, deleteSubject);
 
-subjectRouter
-.route("/:id")
-.get(isLogin, getSubject)
-.put(isLogin, isAdmin, updateSubject)
-.delete(isLogin, isAdmin, deleteSubject);
+// subjectRouter
+// .route("/:id")
+// .get(isLogin, getSubject)
+// .put(isLogin, isAdmin, updateSubject)
+// .delete(isLogin, isAdmin, deleteSubject);
 
 module.exports = subjectRouter;

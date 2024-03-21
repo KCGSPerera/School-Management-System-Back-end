@@ -11,7 +11,7 @@ exports.createSubject = AsyncHandler(async (req, res) => {
     const { name, description, academicTerm} = req.body;
 
     // find the program
-    const programFound = await Program.findById(req.params.programId);
+    const programFound = await Program.findById(req.params.programID);
     if(!programFound){
         throw new Error("Program not found")
     }
