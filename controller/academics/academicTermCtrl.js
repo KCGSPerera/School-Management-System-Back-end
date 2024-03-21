@@ -33,16 +33,16 @@ exports.createAcademicTerm = AsyncHandler(async (req, res) => {
     })
 }); 
 
-// @dec Get all Academic Years
-// @route GET /api/v1/academic-years
+// @dec Get all Academic Terms
+// @route GET /api/v1/academic-terms
 // @access Private
-exports.getAcademicYears = AsyncHandler(async (req, res) => {
-    const academicYears = await AcademicYear.find();
+exports.getAcademicTerms = AsyncHandler(async (req, res) => {
+    const academicTerms = await AcademicTerm.find();
 
     res.status(201).json({
         status: "success",
-        message: "Academic Years fetched successfully",
-        data: academicYears,
+        message: "Academic Terms fetched successfully",
+        data: academicTerms,
     });
 }); 
 
