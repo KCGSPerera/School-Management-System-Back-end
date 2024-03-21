@@ -1,8 +1,8 @@
 const express = require('express');
 const isAdmin = require('../../middlewares/isAdmin');
 const isLogin = require('../../middlewares/isLogin');
-const { createSubject, getSubjects, updateSubject, deleteSubject } = require('../../controller/academics/subjectCtrl');
-    
+const { createSubject, getSubjects, updateSubject, deleteSubject, getSubject } = require('../../controller/academics/subjectCtrl');
+
 const subjectRouter = express.Router();
 
 

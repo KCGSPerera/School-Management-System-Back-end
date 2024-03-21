@@ -6,6 +6,7 @@ const adminRouter = require('../routes/staff/adminRouter');
 const academicTermRouter = require('../routes/academics/academicTerm');
 const classLevelRouter = require('../routes/academics/classLevel');
 const programRouter = require('../routes/academics/program');
+const subjectRouter = require('../routes/academics/subject');
 
 //const notFoundErr = require('../middlewares/globalErrHandler');
 const app = express();
@@ -26,6 +27,9 @@ app.use("/api/v1/academic-terms", academicTermRouter);
 app.use("/api/v1/class-levels", classLevelRouter);
 //Program
 app.use("/api/v1/programs", programRouter);
+//Subject
+app.use("/api/v1/subjects", subjectRouter);
+
 
 
 
