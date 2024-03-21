@@ -33,29 +33,29 @@ exports.createClassLevel = AsyncHandler(async (req, res) => {
     })
 }); 
 
-// @dec Get all Academic Terms
-// @route GET /api/v1/academic-terms
+// @dec Get all Class Level
+// @route GET /api/v1/class-levels
 // @access Private
-exports.getAcademicTerms = AsyncHandler(async (req, res) => {
-    const academicTerms = await AcademicTerm.find();
+exports.getClassLevels = AsyncHandler(async (req, res) => {
+    const classLevels = await ClassLevel.find();
 
     res.status(201).json({
         status: "success",
-        message: "Academic Terms fetched successfully",
-        data: academicTerms,
+        message: "Class levels fetched successfully",
+        data: classLevels,
     });
 }); 
 
-// @dec Get single Academic Term
-// @route GET /api/v1/academic-terms/:id
+// @dec Get single Class Level
+// @route GET /api/v1/class-levels/:id
 // @access Private
-exports.getAcademicTerm = AsyncHandler(async (req, res) => {
-    const academicTerm = await AcademicTerm.findById(req.params.id);
+exports.getClassLevel = AsyncHandler(async (req, res) => {
+    const classLevel = await ClassLevel.findById(req.params.id);
 
     res.status(201).json({
         status: "success",
-        message: "Specified Academic Term fetched successfully",
-        data: academicTerm,
+        message: "Specified Class Level fetched successfully",
+        data: classLevel,
     });
 }); 
 
