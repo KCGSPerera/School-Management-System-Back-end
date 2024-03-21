@@ -104,15 +104,15 @@ exports.updateSubject = AsyncHandler(async (req, res) => {
     });
 }); 
 
-// @dec Delete Program
-// @route DELETE /api/v1/programs/:id
+// @dec Delete Subject
+// @route DELETE /api/v1/subjects/:id
 // @access Private
-exports.deleteProgram = AsyncHandler(async (req, res) => {
+exports.deleteSubject = AsyncHandler(async (req, res) => {
     
-    await Program.findByIdAndDelete(req.params.id);
+    await Subject.findByIdAndDelete(req.params.id);
 
     res.status(201).json({
         status: "success",
-        message: "Specified Program Deleted successfully",
+        message: "Specified Subject Deleted successfully",
     });
 }); 
