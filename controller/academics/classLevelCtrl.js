@@ -59,24 +59,23 @@ exports.getClassLevel = AsyncHandler(async (req, res) => {
     });
 }); 
 
-// @dec Update Academic Term
-// @route PUT /api/v1/academic-terms/:id
+// @dec Update Class Level
+// @route PUT /api/v1/class-levels/:id
 // @access Private
-exports.updateAcademicTerm = AsyncHandler(async (req, res) => {
-    const { name, description, duration } = req.body;
+exports.updateClassLevel = AsyncHandler(async (req, res) => {
+    const { name, description } = req.body;
 
     // check name exists
-    const createAcademicTermFound = await AcademicTerm.findOne({name});
-    if(createAcademicTermFound){
-        throw new Error("Academic Term already exists");
+    const createClassLevelFound = await ClassLevel.findOne({name});
+    if(createClassLevelFound){
+        throw new Error("Class Level already exists");
     }
 
-    const academicTerm = await AcademicTerm.findByIdAndUpdate(
+    const classLevel = await ClassLevel.findByIdAndUpdate(
         req.params.id,
         {
             name, 
             description,
-            duration,
             createdBy: req.userAuth._id,
         },
         {
@@ -86,8 +85,8 @@ exports.updateAcademicTerm = AsyncHandler(async (req, res) => {
 
     res.status(201).json({
         status: "success",
-        message: "Specified Academic Term Updated successfully",
-        data: academicTerm,
+        message: "Specified Class Level Updated successfully",
+        data: classLevel,
     });
 }); 
 
