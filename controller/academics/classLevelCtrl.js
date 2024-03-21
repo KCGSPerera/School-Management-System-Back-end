@@ -90,15 +90,15 @@ exports.updateClassLevel = AsyncHandler(async (req, res) => {
     });
 }); 
 
-// @dec Delete Academic Term
-// @route DELETE /api/v1/academic-terms/:id
+// @dec Delete Class Level
+// @route DELETE /api/v1/class-levels/:id
 // @access Private
-exports.deleteAcademicTerm = AsyncHandler(async (req, res) => {
+exports.deleteClassLevel = AsyncHandler(async (req, res) => {
     
-    await AcademicTerm.findByIdAndDelete(req.params.id);
+    await ClassLevel.findByIdAndDelete(req.params.id);
 
     res.status(201).json({
         status: "success",
-        message: "Specified Academic Term Deleted successfully",
+        message: "Specified Class Level Deleted successfully",
     });
 }); 
