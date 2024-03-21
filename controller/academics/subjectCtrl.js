@@ -38,7 +38,7 @@ exports.createSubject = AsyncHandler(async (req, res) => {
     programFound.subjects.push(subjectCreated._id);
     // save
     await programFound.save();
-    
+
     res.status(201).json({
         status: "success",
         message: "Subject created successfully",
@@ -46,16 +46,16 @@ exports.createSubject = AsyncHandler(async (req, res) => {
     })
 }); 
 
-// @dec Get all Program
-// @route GET /api/v1/programs
+// @dec Get all Subjects
+// @route GET /api/v1/subjects
 // @access Private
-exports.getPrograms = AsyncHandler(async (req, res) => {
-    const programs = await Program.find();
+exports.getSubjects = AsyncHandler(async (req, res) => {
+    const subjects = await Subject.find();
 
     res.status(201).json({
         status: "success",
-        message: "Programs fetched successfully",
-        data: programs,
+        message: "Subject fetched successfully",
+        data: subjects,
     });
 }); 
 
