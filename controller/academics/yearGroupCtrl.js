@@ -50,16 +50,16 @@ exports.getYearGroups = AsyncHandler(async (req, res) => {
     });
 }); 
 
-// @dec Get single Subject
-// @route GET /api/v1/subjects/:id
+// @dec Get single Year Group
+// @route GET /api/v1/year-groups/:id
 // @access Private
-exports.getSubject = AsyncHandler(async (req, res) => {
-    const subject = await Subject.findById(req.params.id);
+exports.getYearGroup = AsyncHandler(async (req, res) => {
+    const yearGroup = await YearGroup.findById(req.params.id);
 
     res.status(201).json({
         status: "success",
-        message: "Specified subject fetched successfully",
-        data: subject,
+        message: "Specified year group fetched successfully",
+        data: yearGroup,
     });
 }); 
 
