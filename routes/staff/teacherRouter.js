@@ -7,7 +7,7 @@ const {
   getTeacherProfile,
   teacherUpdateProfile,
   adminUpdateTeacher,
-} = require("../../controller/staff/teachersCtrl");
+} = require("../../controller/staff/teacherCtrl");
 const isAdmin = require("../../middlewares/isAdmin");
 const isLogin = require("../../middlewares/isLogin");
 const isTeacher = require("../../middlewares/isTeacher");
