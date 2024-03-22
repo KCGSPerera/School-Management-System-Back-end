@@ -37,16 +37,16 @@ exports.createYearGroup = AsyncHandler(async (req, res) => {
     })
 }); 
 
-// @dec Get all Subjects
-// @route GET /api/v1/subjects
+// @dec Get all Year Groups
+// @route GET /api/v1/year-groups
 // @access Private
-exports.getSubjects = AsyncHandler(async (req, res) => {
-    const subjects = await Subject.find();
+exports.getYearGroups = AsyncHandler(async (req, res) => {
+    const yearGroups = await YearGroup.find();
 
     res.status(201).json({
         status: "success",
-        message: "Subject fetched successfully",
-        data: subjects,
+        message: "All Year Groups fetched successfully",
+        data: yearGroups,
     });
 }); 
 
