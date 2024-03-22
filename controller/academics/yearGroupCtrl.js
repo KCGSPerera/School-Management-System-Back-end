@@ -63,24 +63,23 @@ exports.getYearGroup = AsyncHandler(async (req, res) => {
     });
 }); 
 
-// @dec Update Subject
-// @route PUT /api/v1/subjects/:id
+// @dec Update Year Group
+// @route PUT /api/v1/year-groups/:id
 // @access Private
-exports.updateSubject = AsyncHandler(async (req, res) => {
-    const { name, description, academicTerm } = req.body;
+exports.updateYearGroup = AsyncHandler(async (req, res) => {
+    const { name, academicYear } = req.body;
 
-    // check Subject exists
-    const createSubjectFound = await Subject.findOne({name});
-    if(createSubjectFound){
-        throw new Error("Subject already exists");
+    // check Year Group exists
+    const createYearGroupFound = await YearGroup.findOne({name});
+    if(createYearGroupFound){
+        throw new Error("Year Group already exists");
     }
 
-    const subject = await Subject.findByIdAndUpdate(
+    const yearGroup = await YearGroup.findByIdAndUpdate(
         req.params.id,
         {
             name, 
-            description,
-            academicTerm,
+            academicYear,
             createdBy: req.userAuth._id,
         },
         {
@@ -90,8 +89,8 @@ exports.updateSubject = AsyncHandler(async (req, res) => {
 
     res.status(201).json({
         status: "success",
-        message: "Specified Subject Updated successfully",
-        data: subject,
+        message: "Specified year group Updated successfully",
+        data: yearGroup,
     });
 }); 
 
