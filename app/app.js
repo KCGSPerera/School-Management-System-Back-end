@@ -33,7 +33,7 @@ app.use("/api/v1/programs", programRouter);
 app.use("/api/v1/subjects", subjectRouter);
 //Year Group
 app.use("/api/v1/year-groups", yearGroupRouter);
-//Year Group
+//Teacher
 app.use("/api/v1/teachers", teachersRouter);
 
 
