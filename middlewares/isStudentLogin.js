@@ -1,5 +1,5 @@
 const Student = require("../model/Academic/Student");
-const verifyToken = require("../utils/verifyToken");
+const verifyToken = require("../utills/verifyToken");
 
 const isStudentLogin = async (req, res, next) => {
   //get token from header
