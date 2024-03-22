@@ -13,6 +13,7 @@ if(verifiedToken){
 const user = await Admin.findById(verifiedToken.id).select("name email role");
 // save the user into req. object
 req.userAuth = user;
+console.log("After setting userAuth:", req.userAuth);
 next();
 } else {
     const err = new Error("Token expired or Invalid");
