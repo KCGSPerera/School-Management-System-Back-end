@@ -94,15 +94,15 @@ exports.updateYearGroup = AsyncHandler(async (req, res) => {
     });
 }); 
 
-// @dec Delete Subject
-// @route DELETE /api/v1/subjects/:id
+// @dec Delete Year Group
+// @route DELETE /api/v1/year-groups/:id
 // @access Private
-exports.deleteSubject = AsyncHandler(async (req, res) => {
+exports.deleteYearGroup = AsyncHandler(async (req, res) => {
     
-    await Subject.findByIdAndDelete(req.params.id);
+    await YearGroup.findByIdAndDelete(req.params.id);
 
     res.status(201).json({
         status: "success",
-        message: "Specified Subject Deleted successfully",
+        message: "Specified YearGroup Deleted successfully",
     });
 }); 
